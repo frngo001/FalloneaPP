@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Event listener for the "deviceready" event.
+       * It is triggered when the device is ready to be used.
+       */
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+      /**
+       * Callback function for the "deviceready" event.
+       * It requests the file system and performs further operations.
+       */
+      function onDeviceReady() {
+        window.requestFileSystem(
+          LocalFileSystem.PERSISTENT,
+          0,
+          onFileSystemSuccess,
+          onFileSystemError
+        );
+      }
+
+      /**
+       * Callback function for the file system request success.
+       * It gets or creates the "myAppData" directory.
+       * @param {FileSystem} fileSystem - The file system object.
+       */
+      function onFileSystemSuccess(fileSystem) {
+        fileSystem.root.getDirectory(
+          "myAppData",
+          { create: true, exclusive: false },
+          onDirectorySuccess,
+          onDirectoryError
+        );
+      }
+
+      /**
+       * Callback function for the directory request success.
+       * It gets or creates the "data.txt" file inside the "myAppData" directory.
+       * @param {DirectoryEntry} directoryEntry - The directory entry object.
+       */
+      function onDirectorySuccess(directoryEntry) {
+        directoryEntry.getFile(
+          "data.txt",
+          { create: true, exclusive: false },
+          onFileSuccess,
+          onFileError
+        );
+      }
+
+      /**
+       * Callback function for the file request success.
+       * It performs the desired operations with the file.
+       * @param {FileEntry} fileEntry - The file entry object.
+       */
+      function onFileSuccess(fileEntry) {
+        // Do something with the file
+      }
+
+      /**
+       * Callback function for file system access error.
+       * @param {FileError} error - The file error object.
+       */
+      function onFileSystemError(error) {
+        console.log("Error accessing file system: " + error.code);
+      }
+
+      /**
+       * Callback function for directory creation error.
+       * @param {FileError} error - The file error object.
+       */
+      function onDirectoryError(error) {
+        console.log("Error creating directory: " + error.code);
+      }
+
+      /**
+       * Callback function for file creation error.
+       * @param {FileError} error - The file error object.
+       */
+      function onFileError(error) {
+        console.log("Error creating file: " + error.code);
+      }
+    </script>
+  </body>
+</html>
