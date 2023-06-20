@@ -5,14 +5,6 @@
             <directory>PHP-Test</directory>
         </testsuite>
     </testsuites>
-</phpunit>
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
-    <testsuites>
-        <testsuite name="My Test Suite">
-            <directory>PHP-Test</directory>
-        </testsuite>
-    </testsuites>
     <listeners>
         <listener class="PHPUnit\TextUI\ResultPrinter" file="vendor/phpunit/phpunit/src/TextUI/ResultPrinter.php">
             <arguments>
