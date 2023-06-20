@@ -5,18 +5,4 @@
             <directory>PHP-Test</directory>
         </testsuite>
     </testsuites>
-    <listeners>
-        <listener class="PHPUnit\TextUI\ResultPrinter" file="vendor/phpunit/phpunit/src/TextUI/ResultPrinter.php">
-            <arguments>
-                <array>
-                    <element>
-                        <string>testdox</string>
-                    </element>
-                    <element>
-                        <string>true</string>
-                    </element>
-                </array>
-            </arguments>
-        </listener>
-    </listeners>
 </phpunit>
